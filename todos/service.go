@@ -1,4 +1,4 @@
-package todo
+package todos
 
 type Service interface {
 	GetAll() ([]Todos, error)

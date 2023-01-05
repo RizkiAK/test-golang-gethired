@@ -1,4 +1,4 @@
-package todo
+package activites
 
 import (
 	"fmt"
@@ -29,7 +29,7 @@ func (h *Handler) GetAll(c *gin.Context) {
 }
 
 func (h *Handler) GetOne(c *gin.Context) {
-	var input GetTodosDetailInput
+	var input GetTodolistDetailInput
 
 	err := c.ShouldBindUri(&input)
 	if err != nil {
@@ -46,7 +46,7 @@ func (h *Handler) GetOne(c *gin.Context) {
 	}
 
 	if todolist.ID == 0 {
-		msg := fmt.Sprintf("Todo with ID %d Not Found", input.ID)
+		msg := fmt.Sprintf("Activity with ID %d Not Found", input.ID)
 		response := helper.APIResponse(msg, "Not Found", nil)
 		c.JSON(http.StatusBadRequest, response)
 		return
@@ -57,7 +57,7 @@ func (h *Handler) GetOne(c *gin.Context) {
 }
 
 func (h *Handler) Created(c *gin.Context) {
-	var input InputTodos
+	var input InputTodolist
 
 	err := c.ShouldBindJSON(&input)
 	if err != nil {
@@ -84,7 +84,7 @@ func (h *Handler) Created(c *gin.Context) {
 }
 
 func (h *Handler) Updated(c *gin.Context) {
-	var inputID GetTodosDetailInput
+	var inputID GetTodolistDetailInput
 
 	err := c.ShouldBindUri(&inputID)
 	if err != nil {
@@ -93,7 +93,7 @@ func (h *Handler) Updated(c *gin.Context) {
 		return
 	}
 
-	var inputData InputTodosUpdate
+	var inputData InputTodolist
 
 	err = c.ShouldBindJSON(&inputData)
 	if err != nil {
@@ -110,7 +110,7 @@ func (h *Handler) Updated(c *gin.Context) {
 
 	todolist, _ := h.service.GetOne(inputID.ID)
 	if todolist.ID == 0 {
-		msg := fmt.Sprintf("Todo with ID %d Not Found", inputID.ID)
+		msg := fmt.Sprintf("Activity with ID %d Not Found", inputID.ID)
 		response := helper.APIResponse(msg, "Not Found", nil)
 		c.JSON(http.StatusBadRequest, response)
 		return
@@ -128,7 +128,7 @@ func (h *Handler) Updated(c *gin.Context) {
 }
 
 func (h *Handler) Delete(c *gin.Context) {
-	var input GetTodosDetailInput
+	var input GetTodolistDetailInput
 
 	err := c.ShouldBindUri(&input)
 	if err != nil {
@@ -145,7 +145,7 @@ func (h *Handler) Delete(c *gin.Context) {
 	}
 
 	if todolist.ID == 0 {
-		msg := fmt.Sprintf("Todo with ID %d Not Found", input.ID)
+		msg := fmt.Sprintf("Activity with ID %d Not Found", input.ID)
 		response := helper.APIResponse(msg, "Not Found", nil)
 		c.JSON(http.StatusBadRequest, response)
 		return
@@ -162,3 +162,5 @@ func (h *Handler) Delete(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 
 }
+
+// error handling dari handler pindah ke service nanti !!!

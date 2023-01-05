@@ -1,10 +1,10 @@
-package activity
+package activites
 
 type Service interface {
-	GetAll() ([]Todolist, error)
-	GetOne(id int) (Todolist, error)
-	Created(input InputTodolist) (Todolist, error)
-	Updated(inputID int, inputData InputTodolist) (Todolist, error)
+	GetAll() ([]Activites, error)
+	GetOne(id int) (Activites, error)
+	Created(input InputTodolist) (Activites, error)
+	Updated(inputID int, inputData InputTodolist) (Activites, error)
 	Delete(id int) error
 }
 
@@ -16,7 +16,7 @@ func NewService(repository Repository) *service {
 	return &service{repository}
 }
 
-func (s *service) GetAll() ([]Todolist, error) {
+func (s *service) GetAll() ([]Activites, error) {
 	todolist, err := s.repository.GetAll()
 	if err != nil {
 		return todolist, err
@@ -25,7 +25,7 @@ func (s *service) GetAll() ([]Todolist, error) {
 	return todolist, nil
 }
 
-func (s *service) GetOne(id int) (Todolist, error) {
+func (s *service) GetOne(id int) (Activites, error) {
 	todolist, err := s.repository.GetOne(id)
 	if err != nil {
 		return todolist, err
@@ -34,8 +34,8 @@ func (s *service) GetOne(id int) (Todolist, error) {
 	return todolist, nil
 }
 
-func (s *service) Created(input InputTodolist) (Todolist, error) {
-	todolist := Todolist{
+func (s *service) Created(input InputTodolist) (Activites, error) {
+	todolist := Activites{
 		Title: input.Title,
 		Email: input.Email,
 	}
@@ -48,7 +48,7 @@ func (s *service) Created(input InputTodolist) (Todolist, error) {
 	return todolist, nil
 }
 
-func (s *service) Updated(inputID int, inputData InputTodolist) (Todolist, error) {
+func (s *service) Updated(inputID int, inputData InputTodolist) (Activites, error) {
 	todolist, err := s.repository.GetOne(inputID)
 	if err != nil {
 		return todolist, err

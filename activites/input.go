@@ -1,4 +1,4 @@
-package activity
+package activites
 
 type InputTodolist struct {
 	Title string

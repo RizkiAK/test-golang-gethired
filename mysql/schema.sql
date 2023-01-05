@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS test;
 use test;
 
-CREATE TABLE IF NOT EXISTS activity(
+CREATE TABLE IF NOT EXISTS activities(
     id int not null auto_increment primary key,
     activity_group_id int,
     title varchar(255),

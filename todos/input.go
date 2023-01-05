@@ -1,4 +1,4 @@
-package todo
+package todos
 
 type InputTodos struct {
 	Title           string `json:"title"`

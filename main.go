@@ -1,9 +1,9 @@
 package main
 
 import (
-	"test-gethired/activity"
+	"test-gethired/activites"
 	"test-gethired/db"
-	"test-gethired/todo"
+	"test-gethired/todos"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,17 +11,17 @@ import (
 func main() {
 	db := db.InitDB()
 
-	activityRepository := activity.NewRepository(db)
-	activityService := activity.NewService(activityRepository)
-	activityHandler := activity.NewHandler(activityService)
+	activityRepository := activites.NewRepository(db)
+	activityService := activites.NewService(activityRepository)
+	activityHandler := activites.NewHandler(activityService)
 
-	todoRepository := todo.NewRepository(db)
-	todoService := todo.NewService(todoRepository)
-	todoHandler := todo.NewHandler(todoService)
+	todoRepository := todos.NewRepository(db)
+	todoService := todos.NewService(todoRepository)
+	todoHandler := todos.NewHandler(todoService)
 
 	router := gin.Default()
-	activityAPI := router.Group("/todolist.api/activity-groups")
-	todoAPI := router.Group("/todolist.api/todo-item")
+	activityAPI := router.Group("/todolist.api.devcode.gethired.id/activity-groups")
+	todoAPI := router.Group("/todolist.api.devcode.gethired.id/todo-item")
 
 	activityAPI.GET("/", activityHandler.GetAll)
 	activityAPI.GET("/:id", activityHandler.GetOne)

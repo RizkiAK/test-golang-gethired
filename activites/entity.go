@@ -1,8 +1,8 @@
-package activity
+package activites
 
 import "time"
 
-type Todolist struct {
+type Activites struct {
 	ID        int       `json:"id"`
 	Title     string    `json:"title"`
 	Email     string    `json:"email"`
