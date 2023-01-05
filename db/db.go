@@ -5,15 +5,14 @@ import (
 	"log"
 	"os"
 
-	"github.com/joho/godotenv"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
 func InitDB() *gorm.DB {
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("error loading env data")
-	}
+	// if err := godotenv.Load(); err != nil {
+	// 	log.Fatal("error loading env data")
+	// }
 	username := os.Getenv("MYSQL_USER")
 	password := os.Getenv("MYSQL_PASSWORD")
 	host := os.Getenv("MYSQL_HOST")

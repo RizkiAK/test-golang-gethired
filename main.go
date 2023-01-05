@@ -35,5 +35,5 @@ func main() {
 	todoAPI.PATCH("/:id", todoHandler.Updated)
 	todoAPI.DELETE("/:id", todoHandler.Delete)
 
-	router.Run()
+	router.Run(":3030")
 }
